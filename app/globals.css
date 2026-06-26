@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #120d08;
+  --card: #1b130f;
+  --gold: #d4af37;
+  --light-gold: #f4e6c2;
+  --text: #f8f3e8;
+  --accent: #b98633;
+  --border: rgba(212, 175, 55, 0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #120d08;
+  color: #f8f3e8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #120d08; }
+::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f4e6c2; }
+
+::selection {
+  background: rgba(212, 175, 55, 0.28);
+  color: #f4e6c2;
+}
+
+/* ── Keyframes not in Tailwind ── */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-5vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  5% { opacity: 0.85; }
+  95% { opacity: 0.55; }
+  100% {
+    transform: translateY(108vh) translateX(90px) rotate(560deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Utility layer ── */
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e6c2 45%, #d4af37 70%, #b98633 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(
+      90deg,
+      #b98633 0%,
+      #f4e6c2 25%,
+      #d4af37 50%,
+      #f4e6c2 75%,
+      #b98633 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3.5s linear infinite;
+  }
+
+  .gold-border {
+    border: 1px solid rgba(212, 175, 55, 0.35);
+  }
+
+  .glass-card {
+    background: rgba(27, 19, 15, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.3), 0 0 32px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* ── Framer Motion page transition ── */
+.page-enter { opacity: 0; transform: translateY(20px); }
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ── Gallery lightbox backdrop ── */
+.lightbox-backdrop {
+  background: rgba(8, 5, 2, 0.96);
+  backdrop-filter: blur(18px);
+}
+
+/* ── Map iframe reset ── */
+.venue-map iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Input autofill override ── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #1b130f inset;
+  -webkit-text-fill-color: #f8f3e8;
+  caret-color: #d4af37;
+}
