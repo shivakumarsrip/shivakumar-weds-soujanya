@@ -28,7 +28,7 @@ export const siteConfig = {
 
   // Place your custom thumbnail at public/images/og-thumbnail.jpg
   // Recommended size: 1200 × 630 px, < 8 MB, JPG or PNG.
-  ogImage: '/images/og-thumbnail.png',
+  ogImage: '/images/og-thumbnail.jpg',
 
   // Fallback used when og-thumbnail.jpg doesn't exist yet.
   ogImageFallback: '/images/temple-bg.png',
