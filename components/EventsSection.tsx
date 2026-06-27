@@ -43,7 +43,7 @@ const EVENTS = [
 
 export default function EventsSection() {
   return (
-    <section id="events" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="events" className="relative py-16 md:py-32 overflow-hidden">
       {/* Background image with floral panels */}
       <div className="absolute inset-0">
         <Image src="/images/Gallery_Bg.png" alt="" fill className="object-cover object-center" aria-hidden="true" />
@@ -52,7 +52,7 @@ export default function EventsSection() {
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <SectionTitle title="Events" className="mb-16" />
+          <SectionTitle title="Events" className="mb-8 md:mb-16" />
         </ScrollReveal>
 
         <div className="flex flex-col gap-5">
@@ -102,29 +102,29 @@ function EventCard({ event, index }: { event: (typeof EVENTS)[number]; index: nu
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex items-center gap-4 p-5 md:p-6">
+      <div className="relative z-10 flex-1 flex items-center gap-3 md:gap-4 p-3 md:p-6 min-w-0">
         {/* Icon */}
         <div
           className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center"
           style={{
-            background: 'radial-gradient(circle, rgba(212,175,55,0.35) 0%, rgba(180,120,50,0.15) 100%)',
-            border: '1.5px solid rgba(212,175,55,0.6)',
+            background: '#5c3418',
+            border: '1.5px solid #7a4a10',
           }}
         >
           {event.icon}
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-cormorant text-2xl md:text-3xl font-bold text-[#2c1206] leading-tight mb-1">
+          <h3 className="font-cormorant text-xl md:text-3xl font-bold text-[#2c1206] leading-tight mb-0.5 md:mb-1">
             {event.title}
           </h3>
-          <p className="font-cinzel text-[9px] md:text-[10px] tracking-[0.2em] text-[#5c3418] uppercase mb-1.5">
+          <p className="font-cinzel text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] text-[#5c3418] uppercase mb-1 md:mb-1.5">
             {event.date}
           </p>
           {'venue' in event && event.venue && (
-            <p className="flex items-center gap-1.5 font-inter text-[10px] text-[#7a4520] mb-2">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              {event.venue}
+            <p className="flex items-start gap-1.5 font-inter text-[10px] text-[#7a4520] mb-2">
+              <svg className="flex-shrink-0 mt-0.5" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span className="line-clamp-2">{event.venue}</span>
             </p>
           )}
           <p className="font-inter text-xs md:text-sm text-[#3d2010] leading-relaxed">
@@ -135,9 +135,8 @@ function EventCard({ event, index }: { event: (typeof EVENTS)[number]; index: nu
 
       {/* Event image — mask fades it into the texture with no hard edge */}
       <div
-        className="relative z-10 flex-shrink-0 hidden sm:block"
+        className="relative z-10 flex-shrink-0 w-[90px] sm:w-[180px]"
         style={{
-          width: '180px',
           minHeight: '110px',
           maskImage: 'linear-gradient(to right, transparent 0%, black 22%)',
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 22%)',
@@ -157,7 +156,7 @@ function EventCard({ event, index }: { event: (typeof EVENTS)[number]; index: nu
 
 function HaldiIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8c080" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="2.5" />
       <path d="M12 9.5C10.5 7 10 4.5 12 3C14 4.5 13.5 7 12 9.5Z" />
       <path d="M14.5 12C17 10.5 19.5 10 21 12C19.5 14 17 13.5 14.5 12Z" />
@@ -169,7 +168,7 @@ function HaldiIcon() {
 
 function TempleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8c080" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="8.5" cy="12" r="5.5" />
       <circle cx="15.5" cy="12" r="5.5" />
     </svg>
@@ -178,7 +177,7 @@ function TempleIcon() {
 
 function CelebIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8c080" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5Z" />
     </svg>
   )

@@ -1,7 +1,5 @@
-import fs from 'fs'
-import path from 'path'
-import type { Metadata } from 'next'
-import { Cormorant_Garamond, Corinthia, Inter, Cinzel } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, Corinthia, Inter, Cinzel, Marcellus } from 'next/font/google'
 import './globals.css'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import { siteConfig } from '@/lib/site-config'
@@ -35,13 +33,17 @@ const cinzel = Cinzel({
   display: 'swap',
 })
 
-// Use the custom thumbnail if it exists, otherwise fall back to the hero image.
-function resolveOgImage(): string {
-  const primaryAbs = path.join(process.cwd(), 'public', siteConfig.ogImage.replace(/^\//, ''))
-  return fs.existsSync(primaryAbs) ? siteConfig.ogImage : siteConfig.ogImageFallback
-}
+const marcellus = Marcellus({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-marcellus',
+  display: 'swap',
+})
 
-const ogImage = resolveOgImage()
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   // metadataBase makes all relative image paths absolute, which social crawlers require.
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: ogImage,
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: `${siteConfig.groom} & ${siteConfig.bride} Wedding Invitation`,
@@ -74,7 +76,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.ogTitle,
     description: siteConfig.ogDescription,
-    images: [ogImage],
+    images: [siteConfig.ogImage],
   },
 
   // ── General SEO ───────────────────────────────────────────────────────────
@@ -86,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${corinthia.variable} ${inter.variable} ${cinzel.variable}`}
+      className={`${cormorant.variable} ${corinthia.variable} ${inter.variable} ${cinzel.variable} ${marcellus.variable}`}
     >
       <body className="bg-bg text-warm-text font-inter overflow-x-hidden">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>

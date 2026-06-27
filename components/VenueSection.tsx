@@ -48,7 +48,7 @@ const VENUE_FEATURES = [
 
 export default function VenueSection() {
   return (
-    <section id="venue" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="venue" className="relative py-16 md:py-32 overflow-hidden">
       {/* Background image with floral panels */}
       <div className="absolute inset-0">
         <Image src="/images/Gallery_Bg.png" alt="" fill className="object-cover object-center" aria-hidden="true" />
@@ -57,7 +57,7 @@ export default function VenueSection() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <SectionTitle title="Venue" className="mb-14" />
+          <SectionTitle title="Venue" className="mb-8 md:mb-14" />
         </ScrollReveal>
 
         {/* Venue cards */}
@@ -126,16 +126,17 @@ export default function VenueSection() {
 
                   {/* Directions button */}
                   <div className="mt-auto pt-2">
-                    <a href={venue.mapsHref} target="_blank" rel="noopener noreferrer">
-                      <motion.button
-                        whileHover={{ scale: 1.03, boxShadow: '0 0 22px rgba(212,175,55,0.45)' }}
-                        whileTap={{ scale: 0.97 }}
-                        className="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gold text-bg font-cinzel text-[9px] tracking-[0.22em] uppercase font-semibold shadow-gold-sm transition-all duration-300"
-                      >
-                        <Navigation size={12} strokeWidth={2.5} />
-                        Get Directions
-                      </motion.button>
-                    </a>
+                    <motion.a
+                      href={venue.mapsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.03, boxShadow: '0 0 22px rgba(212,175,55,0.45)' }}
+                      whileTap={{ scale: 0.97 }}
+                      className="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gold text-bg font-cinzel text-[9px] tracking-[0.22em] uppercase font-semibold shadow-gold-sm transition-all duration-300"
+                    >
+                      <Navigation size={12} strokeWidth={2.5} />
+                      Get Directions
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>
@@ -154,13 +155,13 @@ export default function VenueSection() {
                   boxShadow: '0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.1)',
                 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card rounded-xl p-5 flex flex-col items-center text-center gap-3 border border-[rgba(212,175,55,0.18)]"
+                className="glass-card rounded-xl p-5 h-36 flex flex-col items-center justify-center text-center gap-3 border border-[rgba(212,175,55,0.18)]"
               >
-                <div className="venue-icon-circle w-11 h-11 rounded-full flex items-center justify-center">
+                <div className="venue-icon-circle w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0">
                   {feature.icon}
                 </div>
                 <div>
-                  <p className="font-cinzel text-[10px] tracking-[0.18em] text-gold/80 uppercase mb-1">
+                  <p className="font-cinzel text-[10px] tracking-[0.18em] text-gold/80 uppercase mb-1 leading-snug">
                     {feature.title}
                   </p>
                   <p className="font-inter text-[11px] text-warm-text/50">{feature.subtitle}</p>

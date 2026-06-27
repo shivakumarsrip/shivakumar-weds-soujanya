@@ -8,8 +8,7 @@ const NAV_LINKS = [
   { href: '#home', label: 'HOME' },
   { href: '#couple', label: 'COUPLE' },
   { href: '#events', label: 'EVENTS' },
-  { href: '#gallery', label: 'GALLERY' },
-  { href: '#rsvp', label: 'RSVP' },
+  { href: '#gallery', label: 'GALLERY' }
 ]
 
 function scrollTo(href: string) {
@@ -67,11 +66,11 @@ export default function Navbar() {
         {/* RSVP + Hamburger */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => scrollTo('#rsvp')}
+            onClick={() => scrollTo('#venue')}
             className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gold text-bg font-cinzel text-[10px] tracking-[0.2em] font-semibold hover:bg-light-gold transition-all duration-300 hover:shadow-[0_0_22px_rgba(212,175,55,0.55)]"
           >
             <Calendar size={13} strokeWidth={2.5} />
-            RSVP NOW
+            VENUE
           </button>
 
           <button
@@ -123,12 +122,12 @@ export default function Navbar() {
               ))}
               <button
                 onClick={() => {
-                  scrollTo('#rsvp')
+                  scrollTo('#venue')
                   setMobileOpen(false)
                 }}
                 className="mt-4 w-full py-3 rounded-full bg-gold text-bg font-cinzel text-xs tracking-[0.2em] font-semibold"
               >
-                RSVP NOW
+                VENUE
               </button>
             </nav>
           </motion.div>

@@ -15,7 +15,7 @@ export default function SectionTitle({ label, title, subtitle, className = '' }:
           {label}
         </p>
       )}
-      <h2 className="font-script font-bold text-5xl md:text-6xl lg:text-7xl text-gold-gradient mb-4 leading-tight">
+      <h2 className="font-luxury text-4xl md:text-5xl lg:text-6xl text-gold-gradient mb-4 leading-tight tracking-[0.12em] uppercase">
         {title}
       </h2>
       <GoldenDivider className="mb-4" />

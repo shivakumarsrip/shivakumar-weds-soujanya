@@ -20,6 +20,7 @@ const config: Config = {
         cormorant: ['var(--font-cormorant)', 'serif'],
         script: ['var(--font-great-vibes)', 'cursive'],
         cinzel: ['var(--font-cinzel)', 'serif'],
+        luxury: ['var(--font-marcellus)', 'serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {

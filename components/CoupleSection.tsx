@@ -7,22 +7,24 @@ import ScrollReveal from './ui/ScrollReveal'
 
 const COUPLE = [
   {
-    name: 'Sunkaraboina ShivaKumar',
+    name: 'Shiva Kumar',
     image: '/images/groom.PNG',
-    description: 'He found his calm in her smile and knew he had found his home.',
+    description: '',
+    family: 'S/o Sunkaraboina Saidulu Yadav & Yadamma',
     side: 'left',
   },
   {
-    name: 'Nyala Soujanya',
+    name: 'Soujanya',
     image: '/images/bride.PNG',
-    description: 'She found her forever in his heart and knew her journey was complete.',
+    description: '',
+    family: 'D/o Nyala Mallaiah Yadav & Swarupa',
     side: 'right',
   },
 ] as const
 
 export default function CoupleSection() {
   return (
-    <section id="couple" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="couple" className="relative py-16 md:py-32 overflow-hidden">
       {/* Background image with floral panels */}
       <div className="absolute inset-0">
         <Image src="/images/Gallery_Bg.png" alt="" fill className="object-cover object-center" aria-hidden="true" />
@@ -31,7 +33,7 @@ export default function CoupleSection() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <SectionTitle title="The Couple" className="mb-16" />
+          <SectionTitle title="The Couple" className="mb-8 md:mb-16" />
         </ScrollReveal>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24">
@@ -63,13 +65,15 @@ export default function CoupleSection() {
         </div>
 
         {/* Together tagline */}
-        <ScrollReveal delay={0.3} className="mt-16 text-center">
+        <ScrollReveal delay={0.3} className="mt-8 md:mt-16 text-center">
           <div className="flex items-center justify-center gap-4 mb-3">
             <div className="h-px w-10 bg-gold/30" />
             <div className="w-1 h-1 bg-gold/50 rotate-45" />
             <div className="h-px w-10 bg-gold/30" />
           </div>
-          <p className="font-script font-bold text-4xl md:text-5xl text-gold-gradient mb-2">Together</p>
+          <p className="font-luxury text-3xl md:text-4xl text-gold-gradient mb-2 tracking-[0.16em] uppercase">
+            Together
+          </p>
           <p className="font-cormorant italic text-sm md:text-base text-warm-text/55 tracking-widest">
             We begin our greatest adventure
           </p>
@@ -93,18 +97,14 @@ function PortraitCard({ person }: { person: (typeof COUPLE)[number] }) {
     >
       {/* Arch-shaped portrait frame */}
       <div
-        className="relative overflow-hidden border-2 border-[rgba(212,175,55,0.45)] shadow-[0_8px_40px_rgba(0,0,0,0.55)]"
+        className="relative overflow-hidden border-2 border-[rgba(212,175,55,0.45)] shadow-[0_8px_40px_rgba(0,0,0,0.55)] w-[170px] h-[240px] sm:w-[220px] sm:h-[300px] rounded-t-[85px] sm:rounded-t-[110px] rounded-b-[18px]"
         style={{
-          width: '220px',
-          height: '300px',
-          borderRadius: '110px 110px 18px 18px',
           background: 'linear-gradient(180deg, #3a2010 0%, #1b130f 100%)',
         }}
       >
         {/* Gold inner frame */}
         <div
-          className="absolute inset-1.5 overflow-hidden z-10"
-          style={{ borderRadius: '104px 104px 14px 14px' }}
+          className="absolute inset-1.5 overflow-hidden z-10 rounded-t-[80px] sm:rounded-t-[104px] rounded-b-[14px]"
         >
           <Image
             src={person.image}
@@ -139,13 +139,17 @@ function PortraitCard({ person }: { person: (typeof COUPLE)[number] }) {
         {person.name}
       </h3>
 
-      {/* Description */}
-      <p
-        className="font-cormorant italic text-center text-warm-text/60 text-sm leading-relaxed"
-        style={{ maxWidth: '200px' }}
-      >
-        {person.description}
+      {/* Family */}
+      <p className="font-cormorant text-center text-warm-text/65 text-sm md:text-base tracking-[0.06em] leading-relaxed max-w-[220px]">
+        {person.family}
       </p>
+
+      {/* Description */}
+      {person.description && (
+        <p className="font-cormorant italic text-center text-warm-text/60 text-sm leading-relaxed max-w-[200px]">
+          {person.description}
+        </p>
+      )}
     </motion.div>
   )
 }

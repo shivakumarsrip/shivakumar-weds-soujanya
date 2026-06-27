@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ZoomIn, Images } from 'lucide-react'
@@ -21,12 +21,24 @@ const GALLERY_IMAGES = [
 export default function GallerySection() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [lightboxImage, setLightboxImage] = useState<(typeof GALLERY_IMAGES)[0] | null>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   const filtered =
     activeFilter === 'All' ? GALLERY_IMAGES : GALLERY_IMAGES.filter((img) => img.category === activeFilter)
 
+  // Close on Escape + focus trap
+  useEffect(() => {
+    if (!lightboxImage) return
+    closeButtonRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightboxImage])
+
   return (
-    <section id="gallery" className="relative pt-24 md:pt-32 pb-16 md:pb-20 overflow-hidden">
+    <section id="gallery" className="relative pt-16 md:pt-32 pb-12 md:pb-20 overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/images/Gallery_Bg.png"
@@ -40,18 +52,19 @@ export default function GallerySection() {
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <SectionTitle title="Gallery" className="mb-12" />
+          <SectionTitle title="Gallery" className="mb-8 md:mb-12" />
         </ScrollReveal>
 
         {/* Filter buttons */}
         <ScrollReveal delay={0.1}>
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-10" role="group" aria-label="Filter gallery">
             {FILTERS.map((filter) => (
               <motion.button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
+                aria-pressed={activeFilter === filter}
                 className={`px-6 py-2 rounded-full font-cinzel text-[10px] tracking-[0.22em] uppercase transition-all duration-300 ${
                   activeFilter === filter
                     ? 'bg-gold text-bg shadow-[0_0_18px_rgba(212,175,55,0.4)]'
@@ -64,7 +77,7 @@ export default function GallerySection() {
           </div>
         </ScrollReveal>
 
-        {/* Grid — uniform 4-column, consistent aspect ratio */}
+        {/* Grid */}
         <motion.div layout className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           <AnimatePresence mode="popLayout">
             {filtered.map((img, i) => (
@@ -77,6 +90,10 @@ export default function GallerySection() {
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className="relative group cursor-pointer overflow-hidden rounded-2xl border border-[rgba(212,175,55,0.28)] bg-card aspect-[3/4]"
                 onClick={() => setLightboxImage(img)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open ${img.alt}`}
+                onKeyDown={(e) => e.key === 'Enter' && setLightboxImage(img)}
               >
                 <Image
                   src={img.src}
@@ -85,21 +102,18 @@ export default function GallerySection() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#120d08]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
                   <div className="w-11 h-11 rounded-full border border-gold/70 bg-[rgba(18,13,8,0.6)] flex items-center justify-center backdrop-blur-sm">
                     <ZoomIn size={18} className="text-gold" />
                   </div>
                 </div>
-                {/* Gold border glow on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[rgba(212,175,55,0.55)] transition-all duration-400 pointer-events-none" />
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
 
-        {/* View more — only shown when more than 10 photos are in the current filter */}
         {filtered.length > 10 && (
           <ScrollReveal delay={0.2} className="mt-10 flex justify-center">
             <motion.button
@@ -124,16 +138,19 @@ export default function GallerySection() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[100] lightbox-backdrop flex items-center justify-center p-4"
             onClick={() => setLightboxImage(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={lightboxImage.alt}
           >
             <motion.div
               initial={{ scale: 0.88, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.88, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="relative max-w-3xl w-full max-h-[90vh] rounded-2xl overflow-hidden border border-[rgba(212,175,55,0.35)] shadow-[0_0_80px_rgba(0,0,0,0.8)]"
+              className="relative max-w-3xl w-full max-h-[90dvh] rounded-2xl overflow-hidden border border-[rgba(212,175,55,0.35)] shadow-[0_0_80px_rgba(0,0,0,0.8)]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full h-[80vh]">
+              <div className="relative w-full h-[80dvh]">
                 <Image
                   src={lightboxImage.src}
                   alt={lightboxImage.alt}
@@ -142,7 +159,9 @@ export default function GallerySection() {
                 />
               </div>
               <button
+                ref={closeButtonRef}
                 onClick={() => setLightboxImage(null)}
+                aria-label="Close lightbox"
                 className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[rgba(18,13,8,0.8)] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-warm-text/80 hover:text-gold hover:border-gold/60 transition-all backdrop-blur-sm"
               >
                 <X size={16} />
