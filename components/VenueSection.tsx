@@ -18,7 +18,7 @@ const VENUES = [
       'Dist: Warangal, Telangana',
     ],
     mapSrc:
-      'https://maps.google.com/maps?q=Koochana+Gardens,Ashalapally,Sangem,Warangal,Telangana&z=14&output=embed',
+      'https://maps.google.com/maps?q=Koochana+Gardens,Ashalapally,Sangem,Warangal,Telangana&z=14&t=k&output=embed',
     mapsHref:
       'https://maps.google.com/?q=Koochana+Gardens,Ashalapally,Sangem,Warangal,Telangana',
   },
@@ -33,7 +33,7 @@ const VENUES = [
       'Telangana 508205',
     ],
     mapSrc:
-      'https://maps.google.com/maps?q=58C7%2BC42+Katangur+Telangana&z=16&output=embed',
+      'https://maps.google.com/maps?q=58C7%2BC42+Katangur+Telangana&z=16&t=k&output=embed',
     mapsHref:
       'https://maps.google.com/?q=58C7%2BC42+Katangur+Telangana',
   },

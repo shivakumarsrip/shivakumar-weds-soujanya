@@ -42,57 +42,37 @@ export default function HeroSection() {
 
   return (
     <section id="home" ref={ref} className="relative min-h-screen flex flex-col">
-      {/* ── Parallax background — overflow-hidden scoped to this wrapper only ── */}
+      {/* Parallax background */}
       <div className="absolute inset-0 overflow-hidden">
-      <motion.div
-        style={{ y: bgY, scale: bgScale }}
-        className="absolute inset-0 origin-center"
-      >
-        {/* Temple background: replace /images/temple-bg.png with your own photo */}
-        <div
-          className="w-full h-full bg-[#2e1a08] animate-ken-burns"
-          style={{
-            backgroundImage: `url('/images/temple-bg.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 30%',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          {/* CSS fallback gradient that mimics warm temple sunset */}
+        <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0 origin-center">
           <div
-            className="absolute inset-0"
+            className="w-full h-full bg-[#2e1a08] animate-ken-burns"
             style={{
-              background: `
-                radial-gradient(ellipse 80% 60% at 50% 35%, rgba(220,140,40,0.18) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 80% at 50% 50%, rgba(160,80,20,0.12) 0%, transparent 70%)
-              `,
+              backgroundImage: `url('/images/temple-bg.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 30%',
+              backgroundRepeat: 'no-repeat',
             }}
-          />
-        </div>
-      </motion.div>
-      </div>{/* end overflow-hidden wrapper */}
+          >
+            <div className="hero-bg-glow absolute inset-0" />
+          </div>
+        </motion.div>
+      </div>
 
       {/* Overlay layers */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#120d08]/75 via-[#120d08]/40 to-[#120d08]/90 z-10" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#120d08]/60 via-transparent to-[#120d08]/60 z-10" />
-      {/* Dark scrim behind text to boost contrast over the bright temple center */}
       <div
         className="absolute z-10 inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 75% 65% at 50% 42%, rgba(18,13,8,0.78) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse 75% 65% at 50% 42%, rgba(18,13,8,0.78) 0%, transparent 70%)' }}
       />
-      {/* Warm glow behind where the temple sits */}
       <div
         className="absolute z-10 inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 60% 40% at 50% 38%, rgba(212,175,55,0.06) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 38%, rgba(212,175,55,0.06) 0%, transparent 70%)' }}
       />
-      {/* Top fade for navbar */}
       <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-[#120d08]/70 to-transparent z-20" />
 
-      {/* ── Main content ── */}
+      {/* Main content */}
       <motion.div
         style={{ y: textY, opacity: contentOpacity }}
         className="relative z-30 flex flex-col items-center justify-center flex-1 text-center px-4 pt-20 pb-32 md:pt-24 md:pb-44"
@@ -122,7 +102,7 @@ export default function HeroSection() {
           Shubh Vivah ✦ Karkataka Lagnam
         </motion.p>
 
-        {/* COUPLE NAMES — hero statement */}
+        {/* Couple names */}
         <motion.h1
           initial={{ opacity: 0, y: 50, scale: 0.92 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -138,23 +118,28 @@ export default function HeroSection() {
           SHIVA KUMAR &amp; SOUJANYA
         </motion.h1>
 
-        {/* Date */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="font-cinzel text-[10px] md:text-xs tracking-[0.35em] text-light-gold uppercase mb-3 px-5 py-2 rounded-full bg-[#120d08]/45 border border-gold/20 backdrop-blur-[2px]"
-          style={{ textShadow: '0 2px 4px rgba(18,13,8,1), 0 4px 18px rgba(18,13,8,0.95)' }}
+        {/* Date badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 16, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.95 }}
+          className="mb-5"
         >
-          5TH JULY 2026
-        </motion.p>
+          <div className="inline-flex items-center gap-3 px-7 py-2.5 rounded-full bg-[#120d08]/45 border border-gold/20 backdrop-blur-[2px]">
+            <div className="w-1 h-1 bg-light-gold rounded-full" />
+            <span className="hero-date-text font-cinzel font-semibold text-sm md:text-base tracking-[0.35em] text-light-gold uppercase">
+              5th July 2026
+            </span>
+            <div className="w-1 h-1 bg-light-gold rounded-full" />
+          </div>
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.15 }}
-          className="font-cormorant italic text-xs md:text-base lg:text-lg text-warm-text/90 tracking-[0.08em] md:tracking-[0.12em] uppercase mb-6 md:mb-10 px-2"
+          transition={{ duration: 1, delay: 1.1 }}
+          className="font-cormorant italic text-xs md:text-base lg:text-lg text-warm-text/90 tracking-[0.08em] md:tracking-[0.12em] uppercase mb-8 md:mb-10 px-2"
           style={{ textShadow: '0 2px 8px rgba(0,0,0,1), 0 4px 24px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.8)' }}
         >
           Two Hearts, One Promise... A Lifetime Together
@@ -164,7 +149,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.3 }}
+          transition={{ duration: 1, delay: 1.25 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-4 sm:px-0"
         >
           <motion.button
@@ -189,7 +174,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* ── Scroll Down indicator ── */}
+      {/* Scroll Down indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -207,13 +192,9 @@ export default function HeroSection() {
         </motion.button>
       </motion.div>
 
-      {/* ── Bottom info bar ── */}
+      {/* Bottom info bar */}
       <div className="absolute bottom-0 inset-x-0 z-30">
-
-        {/* Straight golden divider line */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(212,175,55,0.45)] to-transparent" />
-
-        {/* Info bar */}
         <div className="bg-[#120d08] py-3.5">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x md:divide-[rgba(212,175,55,0.18)]">
@@ -240,16 +221,7 @@ export default function HeroSection() {
 
 function CalendarIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#d4af37"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
       <line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" />

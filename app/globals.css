@@ -121,6 +121,18 @@ body {
   border: 1px solid rgba(212,175,55,0.3);
 }
 
+.rings-frame { background: #1b130f; }
+
+.hero-bg-glow {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 35%, rgba(220,140,40,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 50% 50%, rgba(160,80,20,0.12) 0%, transparent 70%);
+}
+
+
+.hero-date-text { text-shadow: 0 2px 4px rgba(18,13,8,1), 0 4px 18px rgba(18,13,8,0.95); }
+
+
 /* ── Input autofill override ── */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

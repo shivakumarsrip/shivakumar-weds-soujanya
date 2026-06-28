@@ -4,6 +4,8 @@ import CoupleSection from '@/components/CoupleSection'
 import EventsSection from '@/components/EventsSection'
 import GallerySection from '@/components/GallerySection'
 import VenueSection from '@/components/VenueSection'
+import FamilySection from '@/components/FamilySection'
+import InvitationNote from '@/components/InvitationNote'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
@@ -15,6 +17,8 @@ export default function HomePage() {
       <EventsSection />
       <GallerySection />
       <VenueSection />
+      <FamilySection />
+      <InvitationNote />
       <Footer />
     </main>
   )

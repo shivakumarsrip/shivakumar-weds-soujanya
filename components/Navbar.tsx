@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { href: '#home', label: 'HOME' },
   { href: '#couple', label: 'COUPLE' },
   { href: '#events', label: 'EVENTS' },
-  { href: '#gallery', label: 'GALLERY' }
+  { href: '#gallery', label: 'GALLERY' },
+  { href: '#family', label: 'FAMILY' },
 ]
 
 function scrollTo(href: string) {
@@ -50,7 +51,7 @@ export default function Navbar() {
         </button>
 
         {/* Desktop links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-5">
           {NAV_LINKS.map((link) => (
             <button
               key={link.href}

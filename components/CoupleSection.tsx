@@ -8,14 +8,14 @@ import ScrollReveal from './ui/ScrollReveal'
 const COUPLE = [
   {
     name: 'Shiva Kumar',
-    image: '/images/groom.PNG',
+    image: '/images/Groom.jpeg',
     description: '',
     family: 'S/o Sunkaraboina Saidulu Yadav & Yadamma',
     side: 'left',
   },
   {
     name: 'Soujanya',
-    image: '/images/bride.PNG',
+    image: '/images/Bride.jpeg',
     description: '',
     family: 'D/o Nyala Mallaiah Yadav & Swarupa',
     side: 'right',

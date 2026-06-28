@@ -32,9 +32,9 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 pt-10 md:pt-14 pb-8 relative z-10">
         {/* Main columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <p className="font-cinzel text-2xl font-semibold text-gold tracking-[0.2em] mb-4">
               S&amp;S
             </p>
@@ -50,7 +50,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
-              {['#home', '#couple', '#events', '#gallery', '#venue'].map((href) => (
+              {['#home', '#couple', '#events', '#gallery', '#venue', '#family'].map((href) => (
                 <li key={href}>
                   <FooterLink
                     label={href.replace('#', '').charAt(0).toUpperCase() + href.slice(2)}
@@ -108,29 +108,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* With Love */}
-          <div className="hidden lg:flex flex-col items-end justify-between text-right">
-            <div />
-            <div>
-              <p className="font-cinzel text-[9px] tracking-[0.25em] text-warm-text/40 uppercase mb-3">
-                With Love,
-              </p>
-              <p className="font-script font-bold text-3xl text-gold-gradient leading-tight">
-                Shiva Kumar
-              </p>
-              <p className="font-script font-bold text-3xl text-gold-gradient leading-tight">&amp; Soujanya</p>
-              <HeartIcon className="ml-auto mt-3" />
-            </div>
-          </div>
-        </div>
-
-        {/* With Love (mobile) */}
-        <div className="lg:hidden text-center mb-10">
-          <p className="font-cinzel text-[9px] tracking-[0.25em] text-warm-text/40 uppercase mb-2">
-            With Love,
-          </p>
-          <p className="font-script font-bold text-4xl text-gold-gradient">Shiva Kumar &amp; Soujanya</p>
-          <HeartIcon className="mx-auto mt-3" />
         </div>
 
         {/* Divider */}
@@ -170,16 +147,3 @@ const CONTACT_ITEMS = [
   },
 ]
 
-function HeartIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="#d4af37"
-      className={`opacity-70 ${className}`}
-    >
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  )
-}
