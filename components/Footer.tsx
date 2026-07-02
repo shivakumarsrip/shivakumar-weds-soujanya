@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import GoldenDivider from './ui/GoldenDivider'
 
 function scrollTo(href: string) {
   if (typeof window === 'undefined') return
@@ -109,14 +108,6 @@ export default function Footer() {
           </div>
 
         </div>
-
-        {/* Divider */}
-        <GoldenDivider className="mb-7" />
-
-        {/* Copyright */}
-        <p className="font-inter text-center text-[10px] text-warm-text/35 tracking-widest">
-          &copy; 2026 Shiva Kumar &amp; Soujanya. All Rights Reserved.
-        </p>
       </div>
     </footer>
   )

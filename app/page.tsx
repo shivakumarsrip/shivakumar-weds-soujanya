@@ -7,6 +7,7 @@ import VenueSection from '@/components/VenueSection'
 import FamilySection from '@/components/FamilySection'
 import InvitationNote from '@/components/InvitationNote'
 import Footer from '@/components/Footer'
+import DesignerCredit from '@/components/DesignerCredit'
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <FamilySection />
       <InvitationNote />
       <Footer />
+      <DesignerCredit />
     </main>
   )
 }

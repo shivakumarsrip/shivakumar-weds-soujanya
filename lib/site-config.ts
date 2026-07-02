@@ -32,6 +32,13 @@ export const siteConfig = {
 
   // Fallback used when og-thumbnail.jpg doesn't exist yet.
   ogImageFallback: '/images/temple-bg.png',
+
+  // ── Designer credit (bottom of page) ────────────────────────────────────
+  credit: {
+    name: 'Sripada Shivakumar',
+    instagramUrl: 'https://www.instagram.com/shivakumar_sri/',
+    whatsappUrl: 'https://wa.me/919666086127',
+  },
 } as const
 
 export type SiteConfig = typeof siteConfig
