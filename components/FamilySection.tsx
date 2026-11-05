@@ -10,11 +10,11 @@ import ScrollReveal from './ui/ScrollReveal'
 const FAMILIES = [
   {
     name: "Shivakumar's Family",
-    image: '/images/Groom%20Family.jpeg',
+    image: '/images/Groom%20Family.png',
   },
   {
     name: "Soujanya's Family",
-    image: '/images/Bride%20Family.jpeg',
+    image: '/images/Bride%20Family.png',
   },
 ]
 
