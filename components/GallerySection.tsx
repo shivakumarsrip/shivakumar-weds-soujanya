@@ -8,17 +8,18 @@ import SectionTitle from './ui/SectionTitle'
 import ScrollReveal from './ui/ScrollReveal'
 
 const GALLERY_IMAGES = [
-  { id: 1, src: '/images/1.jpeg', alt: 'Pre Wedding Photo 1' },
-  { id: 2, src: '/images/2.jpeg', alt: 'Pre Wedding Photo 2' },
-  { id: 3, src: '/images/3.jpeg', alt: 'Ceremony Photo 1' },
-  { id: 4, src: '/images/4.jpeg', alt: 'Celebrations Photo 1' },
-  { id: 5, src: '/images/5.jpeg', alt: 'Ceremony Photo 2' },
-  { id: 6, src: '/images/6.jpeg', alt: 'Celebrations Photo 2' },
-  { id: 7, src: '/images/7.jpeg', alt: 'Pre Wedding Photo 3' },
-  { id: 8, src: '/images/8.jpeg', alt: 'Pre Wedding Photo 4' },
-  { id: 9, src: '/images/9.jpeg', alt: 'Ceremony Photo 3' },
-  { id: 10, src: '/images/10.jpeg', alt: 'Celebrations Photo 3' },
-  { id: 11, src: '/images/rings.jpeg', alt: 'Wedding Rings' },
+  { id: 1, src: '/images/1.png', alt: 'Pre Wedding Photo 1' },
+  { id: 2, src: '/images/2.png', alt: 'Pre Wedding Photo 2' },
+  { id: 3, src: '/images/3.png', alt: 'Ceremony Photo 1' },
+  { id: 4, src: '/images/4.png', alt: 'Celebrations Photo 1' },
+  { id: 5, src: '/images/5.png', alt: 'Ceremony Photo 2' },
+  { id: 6, src: '/images/6.png', alt: 'Celebrations Photo 2' },
+  { id: 7, src: '/images/7.png', alt: 'Pre Wedding Photo 3' },
+  { id: 8, src: '/images/9.png', alt: 'Ceremony Photo 3' },
+  { id: 9, src: '/images/10.png', alt: 'Celebrations Photo 3' },
+  { id: 10, src: '/images/11.png', alt: 'Pre Wedding Photo 4' },
+  { id: 11, src: '/images/12.png', alt: 'Pre Wedding Photo 5' },
+  { id: 12, src: '/images/rings.jpeg', alt: 'Wedding Rings' },
 ]
 
 export default function GallerySection() {
